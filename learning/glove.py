@@ -5,7 +5,7 @@ import os.path
 import numpy as np
 
 class Glove:
-    _EMBEDDINGS_FILE="glove.6B.50d.txt"
+    _EMBEDDINGS_FILE="glove.6B.300d.txt"
     _GLOVE_URL = "https://nlp.stanford.edu/projects/glove"
     
     def __init__(self):
