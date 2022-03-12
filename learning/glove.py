@@ -5,7 +5,7 @@ import os.path
 import numpy as np
 
 class Glove:
-    _EMBEDDINGS_FILE="glove.6B.300d.txt"
+    _EMBEDDINGS_FILE="glove.840B.300d.txt"
     _GLOVE_URL = "https://nlp.stanford.edu/projects/glove"
     
     def __init__(self, all_words = None):
@@ -22,8 +22,7 @@ class Glove:
                     continue
                 embedding = np.asarray(tokens[1:], dtype='float')
                 self.embeddings[word] = embedding
-    
-    
+        print("Loaded embeddings from {}.".format(Glove._EMBEDDINGS_FILE))
     
     def get_embeddings(self):
         return self.embeddings

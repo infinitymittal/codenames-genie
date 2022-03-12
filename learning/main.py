@@ -17,6 +17,10 @@ def find_closest(word):
     #closest = [word for word in closest if word[0] in board_words]
     return closest
 
-result = find_closest(guess_word)
-for word,score in result:
-    print(word, score, sep='\t')
+# result = find_closest(guess_word)
+# for word,score in result:
+#     print(word, score, sep='\t')
+
+print(glove.get_embeddings()["metal"])
+print(glove.get_embeddings()["blacksmith"])
+print(glove.get_embeddings()["metal"]*glove.get_embeddings()["blacksmith"])
