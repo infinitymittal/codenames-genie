@@ -5,7 +5,7 @@ import os.path
 import numpy as np
 
 class FastText:
-    _EMBEDDINGS_FILE="wiki-news-300d-1M.vec"
+    _EMBEDDINGS_FILE="crawl-300d-2M.vec"
     _FASTEXT_URL = "https://fasttext.cc/docs/en/english-vectors.html"
     
     def __init__(self, all_words = None):
