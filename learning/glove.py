@@ -28,8 +28,3 @@ class Glove:
 
     def cosine_dist(embedding1, embedding2):
         return np.dot(embedding1, embedding2)/(np.linalg.norm(embedding1)*np.linalg.norm(embedding2))
-
-glove = Glove()
-print(glove.embeddings['man'])
-print(glove.find_closest_by_word("man")[:10])
-print(glove.find_closest_by_word("woman")[:10])
