@@ -5,14 +5,18 @@ board_words = set(["casino", "shot", "spurs", "blacksmith", "lawyer",\
                    "hook", "pepper", "cheese", "robin", "page",\
                    "rust", "ball", "peanut", "key", "mole",\
                    "van", "sack", "piano", "santa", "screen"])
+guess_word = "metal"
 
-print(len(board_words))
+all_words = set(board_words)
+all_words.add(guess_word)
 
-glove = Glove()
+glove = Glove(all_words)
 
 def find_closest(word):
     closest = glove.find_closest_by_word(word)
-    closest = [word for word in closest if word[0] in board_words]
+    #closest = [word for word in closest if word[0] in board_words]
     return closest
 
-print(find_closest("metal"))
+result = find_closest(guess_word)
+for word,score in result:
+    print(word, score, sep='\t')

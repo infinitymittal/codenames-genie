@@ -8,7 +8,7 @@ class Glove:
     _EMBEDDINGS_FILE="glove.6B.300d.txt"
     _GLOVE_URL = "https://nlp.stanford.edu/projects/glove"
     
-    def __init__(self):
+    def __init__(self, all_words = None):
         if(not os.path.exists(Glove._EMBEDDINGS_FILE)):
             raise Exception("Embeddings file not found. Obtain {} from {}."\
                   .format(Glove._EMBEDDINGS_FILE, Glove._GLOVE_URL))
@@ -17,8 +17,13 @@ class Glove:
         with open(Glove._EMBEDDINGS_FILE, encoding='utf-8', mode='r') as file:
             for line in file:
                 tokens = line.split(' ')
+                word = tokens[0]
+                if all_words and word not in all_words:
+                    continue
                 embedding = np.asarray(tokens[1:], dtype='float')
-                self.embeddings[tokens[0]] = embedding
+                self.embeddings[word] = embedding
+    
+    
     
     def get_embeddings(self):
         return self.embeddings
