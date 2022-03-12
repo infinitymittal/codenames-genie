@@ -24,7 +24,12 @@ class Glove:
         return self.embeddings
     
     def find_closest_by_word(self, word):
-        return sorted(self.embeddings.keys(), key=lambda match_word: Glove.cosine_dist(self.embeddings[match_word], self.embeddings[word]), reverse=True)
+        scores = {match_word:self.cosine_dist_by_word(match_word, word)\
+                  for match_word in self.embeddings.keys()}
+        return sorted(scores.items(), key=lambda x:x[1], reverse=True)
+
+    def cosine_dist_by_word(self, word1, word2):
+        return Glove.cosine_dist(self.embeddings[word1], self.embeddings[word2])
 
     def cosine_dist(embedding1, embedding2):
         return np.dot(embedding1, embedding2)/(np.linalg.norm(embedding1)*np.linalg.norm(embedding2))

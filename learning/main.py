@@ -12,7 +12,7 @@ glove = Glove()
 
 def find_closest(word):
     closest = glove.find_closest_by_word(word)
-    closest = [word for word in closest if word in board_words]
+    closest = [word for word in closest if word[0] in board_words]
     return closest
 
 print(find_closest("metal"))
